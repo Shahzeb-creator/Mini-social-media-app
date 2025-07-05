@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Johnson's Profile | SocialFeed</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e4e6eb;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+            color: #1877f2;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: #1877f2;
+            font-weight: 700;
+        }
+        
+        .back-btn {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-btn:hover {
+            background-color: #166fe5;
+        }
+        /* Profile header section */
+        
+        .profile-header {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+        
+        .cover-photo {
+            height: 220px;
+            background: linear-gradient(45deg, #1877f2, #42b72a);
+            position: relative;
+        }
+        
+        .profile-info {
+            padding: 30px 30px 25px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1877f2, #0d5cb6);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            margin: -80px auto 20px;
+            border: 5px solid white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .username {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1c1e21;
+        }
+        
+        .follow-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+            border: none;
+        }
+        
+        .follow-btn.follow {
+            background-color: #1877f2;
+            color: white;
+        }
+        
+        .follow-btn.follow:hover {
+            background-color: #166fe5;
+        }
+        
+        .follow-btn.unfollow {
+            background-color: #e4e6eb;
+            color: #1c1e21;
+        }
+        
+        .follow-btn.unfollow:hover {
+            background-color: #d8dadf;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e4e6eb;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1877f2;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #65676b;
+            margin-top: 5px;
+        }
+        /* Posts section */
+        
+        .section-title {
+            font-size: 22px;
+            color: #1c1e21;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1877f2;
+            display: inline-block;
+        }
+        
+        .posts-container {
+            margin-bottom: 40px;
+        }
+        
+        .post-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .post-content {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #1c1e21;
+            margin-bottom: 15px;
+        }
+        
+        .post-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #65676b;
+            font-size: 14px;
+        }
+        
+        .post-time {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #65676b;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .post-action:hover {
+            color: #1877f2;
+        }
+        
+        .no-posts {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .no-posts i {
+            font-size: 48px;
+            color: #e4e6eb;
+            margin-bottom: 15px;
+        }
+        
+        .no-posts p {
+            font-size: 18px;
+            color: #65676b;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        /* Responsive design */
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .cover-photo {
+                height: 180px;
+            }
+            .avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 36px;
+                margin-top: -60px;
+            }
+            .stats {
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            .profile-info {
+                padding: 20px 15px;
+            }
+            .avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 28px;
+                margin-top: -50px;
+            }
+            .username {
+                font-size: 24px;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .post-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-users"></i>
+                <h1>SocialFeed</h1>
+            </div>
+            <a href="/" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+
+        <div class="profile-header">
+            <div class="cover-photo"></div>
+            <div class="profile-info">
+                <div class="avatar">AJ</div>
+                <h2 class="username">Alex Johnson</h2>
+                <button class="follow-btn follow">Follow</button>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">248</div>
+                        <div class="stat-label">Followers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">156</div>
+                        <div class="stat-label">Following</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">42</div>
+                        <div class="stat-label">Posts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title">Recent Posts</h3>
+
+        <div class="posts-container">
+            <!-- Post 1 -->
+            <div class="post-card">
+                <p class="post-content">Just finished my morning hike! The view from the top was absolutely breathtaking. Nature always helps me clear my mind and refocus. 🏞️ #Outdoors #Hiking</p>
+                <div class="post-meta">
+                    <div class="post-time">
+                        <i class="far fa-clock"></i> 2 hours ago
+                    </div>
+                    <div class="post-actions">
+                        <a href="#" class="post-action">
+                            <i class="far fa-heart"></i> 24
+                        </a>
+                        <a href="#" class="post-action">
+                            <i class="far fa-comment"></i> 8
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="post-card">
+                <p class="post-content">Excited to announce that I've started learning web development! Building my first full-stack application with Python and Flask. Any tips for a beginner? 💻 #WebDev #CodingJourney</p>
+                <div class="post-meta">
+                    <div class="post-time">
+                        <i class="far fa-clock"></i> Yesterday
+                    </div>
+                    <div class="post-actions">
+                        <a href="#" class="post-action">
+                            <i class="far fa-heart"></i> 37
+                        </a>
+                        <a href="#" class="post-action">
+                            <i class="far fa-comment"></i> 12
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post 3 -->
+            <div class="post-card">
+                <p class="post-content">My photography exhibition opens next week! After months of preparation, I'm thrilled to share my "Urban Landscapes" series with everyone. The opening reception is Friday at 7pm. 🎨📸 #Photography #ArtExhibition</p>
+                <div class="post-meta">
+                    <div class="post-time">
+                        <i class="far fa-clock"></i> 3 days ago
+                    </div>
+                    <div class="post-actions">
+                        <a href="#" class="post-action">
+                            <i class="far fa-heart"></i> 89
+                        </a>
+                        <a href="#" class="post-action">
+                            <i class="far fa-comment"></i> 21
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post 4 -->
+            <div class="post-card">
+                <p class="post-content">Just finished reading "The Psychology of Money" - highly recommend it to anyone interested in understanding how we think about wealth. What's the best book you've read recently? 📚 #ReadingList #PersonalFinance</p>
+                <div class="post-meta">
+                    <div class="post-time">
+                        <i class="far fa-clock"></i> 1 week ago
+                    </div>
+                    <div class="post-actions">
+                        <a href="#" class="post-action">
+                            <i class="far fa-heart"></i> 52
+                        </a>
+                        <a href="#" class="post-action">
+                            <i class="far fa-comment"></i> 17
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Follow/Unfollow functionality
+        const followBtn = document.querySelector('.follow-btn');
+
+        followBtn.addEventListener('click', function() {
+            if (this.classList.contains('follow')) {
+                this.classList.remove('follow');
+                this.classList.add('unfollow');
+                this.textContent = 'Following';
+            } else {
+                this.classList.remove('unfollow');
+                this.classList.add('follow');
+                this.textContent = 'Follow';
+            }
+
+            // Animation effect
+            this.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+        });
+
+        // Like functionality for posts
+        document.querySelectorAll('.post-action').forEach(action => {
+            action.addEventListener('click', function(e) {
+                e.preventDefault();
+                const icon = this.querySelector('i');
+
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+
+                    // Update count
+                    const count = this.querySelector('i').nextSibling;
+                    const currentCount = parseInt(count.textContent);
+                    count.textContent = currentCount + 1;
+
+                    // Animation
+                    this.style.color = '#1877f2';
+                    this.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+
+                    // Update count
+                    const count = this.querySelector('i').nextSibling;
+                    const currentCount = parseInt(count.textContent);
+                    count.textContent = currentCount - 1;
+
+                    // Animation
+                    this.style.color = '#65676b';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

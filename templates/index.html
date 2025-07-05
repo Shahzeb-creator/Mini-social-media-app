@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialFeed | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            line-height: 1.5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+            color: #1877f2;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: #1877f2;
+            font-weight: 700;
+        }
+        
+        .welcome {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1c1e21;
+        }
+        
+        .logout-btn {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .logout-btn:hover {
+            background-color: #166fe5;
+        }
+        
+        .post-form {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+        
+        .post-form textarea {
+            width: 100%;
+            min-height: 100px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .post-form textarea:focus {
+            outline: none;
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+        }
+        
+        .post-btn {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: block;
+            margin-left: auto;
+        }
+        
+        .post-btn:hover {
+            background-color: #166fe5;
+        }
+        
+        .post-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #1877f2;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        
+        .user-info {
+            flex-grow: 1;
+        }
+        
+        .username {
+            font-weight: 600;
+            color: #1c1e21;
+            text-decoration: none;
+        }
+        
+        .username:hover {
+            text-decoration: underline;
+        }
+        
+        .post-time {
+            font-size: 12px;
+            color: #65676b;
+        }
+        
+        .post-content {
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #1c1e21;
+        }
+        
+        .post-stats {
+            display: flex;
+            align-items: center;
+            color: #65676b;
+            font-size: 14px;
+            padding: 10px 0;
+            border-top: 1px solid #e4e6eb;
+            border-bottom: 1px solid #e4e6eb;
+            margin-bottom: 15px;
+        }
+        
+        .like-count {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .like-count i {
+            color: #1877f2;
+            margin-right: 4px;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .action-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            background: none;
+            border: none;
+            font-weight: 600;
+            color: #65676b;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .action-btn:hover {
+            background-color: #f0f2f5;
+        }
+        
+        .action-btn i {
+            font-size: 18px;
+        }
+        
+        .like-btn:hover i {
+            color: #1877f2;
+        }
+        
+        .comment-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .comment-form input {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: 1px solid #dddfe2;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .comment-form input:focus {
+            outline: none;
+            border-color: #1877f2;
+        }
+        
+        .comment-btn {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .comment-btn:hover {
+            background-color: #166fe5;
+        }
+        
+        .profile-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: #1877f2;
+            text-decoration: none;
+        }
+        
+        .profile-link:hover {
+            text-decoration: underline;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e4e6eb;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .post-actions {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .action-btn {
+                justify-content: flex-start;
+                padding-left: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-users"></i>
+                <h1>SocialFeed</h1>
+            </div>
+            <div class="welcome">Welcome</div>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </header>
+
+        <div class="post-form">
+            <form action="/post" method="post">
+                <textarea name="content" placeholder="What's on your mind?"></textarea>
+                <button type="submit" class="post-btn">Post</button>
+            </form>
+        </div>
+
+        <div class="posts">
+            <!-- Post 1 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="avatar">AL</div>
+                    <div class="user-info">
+                        <a href="/user/AlexJohnson" class="username">ALI</a>
+                        <div class="post-time">Posted 2 hours ago</div>
+                    </div>
+                </div>
+                <p class="post-content">Just finished my morning hike! The view from the top was absolutely breathtaking. Nature always helps me clear my mind and refocus. 🏞️ #Outdoors #Hiking</p>
+
+                <div class="post-stats">
+                    <div class="like-count"><i class="fas fa-thumbs-up"></i> 24</div>
+                    <div>8 comments</div>
+                </div>
+
+                <div class="post-actions">
+                    <button class="action-btn like-btn">
+                        <i class="far fa-thumbs-up"></i> Like
+                    </button>
+                    <button class="action-btn comment-btn">
+                        <i class="far fa-comment"></i> Comment
+                    </button>
+                </div>
+
+                <form class="comment-form" action="/comment/1" method="post">
+                    <input type="text" name="comment" placeholder="Add a comment...">
+                    <button type="submit" class="comment-btn">Post</button>
+                </form>
+
+                <a href="/user/AlexJohnson" class="profile-link">View Profile</a>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="avatar">SA</div>
+                    <div class="user-info">
+                        <a href="/user/MariaSmith" class="username">Shahzeb Ahmed</a>
+                        <div class="post-time">Posted 5 hours ago</div>
+                    </div>
+                </div>
+                <p class="post-content">Just tried a new recipe for vegan lasagna and it turned out amazing! I've been experimenting with plant-based cooking lately and I'm loving the results. 🌱👩‍🍳</p>
+
+                <div class="post-stats">
+                    <div class="like-count"><i class="fas fa-thumbs-up"></i> 42</div>
+                    <div>15 comments</div>
+                </div>
+
+                <div class="post-actions">
+                    <button class="action-btn like-btn">
+                        <i class="far fa-thumbs-up"></i> Like
+                    </button>
+                    <button class="action-btn comment-btn">
+                        <i class="far fa-comment"></i> Comment
+                    </button>
+                </div>
+
+                <form class="comment-form" action="/comment/2" method="post">
+                    <input type="text" name="comment" placeholder="Add a comment...">
+                    <button type="submit" class="comment-btn">Post</button>
+                </form>
+
+                <a href="/user/MariaSmith" class="profile-link">View Profile</a>
+            </div>
+
+            <!-- Post 3 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="avatar">B</div>
+                    <div class="user-info">
+                        <a href="/user/DavidJones" class="username">Bashir </a>
+                        <div class="post-time">Posted yesterday</div>
+                    </div>
+                </div>
+                <p class="post-content">My team just launched the new project we've been working on for months! So proud of everyone who contributed to this achievement. 🚀 #ProductLaunch #Teamwork</p>
+
+                <div class="post-stats">
+                    <div class="like-count"><i class="fas fa-thumbs-up"></i> 87</div>
+                    <div>23 comments</div>
+                </div>
+
+                <div class="post-actions">
+                    <button class="action-btn like-btn">
+                        <i class="far fa-thumbs-up"></i> Like
+                    </button>
+                    <button class="action-btn comment-btn">
+                        <i class="far fa-comment"></i> Comment
+                    </button>
+                </div>
+
+                <form class="comment-form" action="/comment/3" method="post">
+                    <input type="text" name="comment" placeholder="Add a comment...">
+                    <button type="submit" class="comment-btn">Post</button>
+                </form>
+
+                <a href="/user/DavidJones" class="profile-link">View Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactivity for like buttons
+        document.querySelectorAll('.like-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                const likeCount = this.closest('.post-card').querySelector('.like-count');
+
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                    this.style.color = '#1877f2';
+
+                    // Update like count
+                    let count = parseInt(likeCount.textContent.match(/\d+/)[0]);
+                    likeCount.innerHTML = `<i class="fas fa-thumbs-up"></i> ${count + 1}`;
+
+                    // Visual feedback
+                    this.style.backgroundColor = '#e7f3ff';
+                    setTimeout(() => {
+                        this.style.backgroundColor = '';
+                    }, 500);
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                    this.style.color = '#65676b';
+
+                    // Update like count
+                    let count = parseInt(likeCount.textContent.match(/\d+/)[0]);
+                    likeCount.innerHTML = `<i class="fas fa-thumbs-up"></i> ${count - 1}`;
+                }
+            });
+        });
+
+        // Focus textarea when clicking "Comment" button
+        document.querySelectorAll('.comment-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const commentInput = this.closest('.post-card').querySelector('input[name="comment"]');
+                commentInput.focus();
+            });
+        });
+    </script>
+</body>
+
+</html>

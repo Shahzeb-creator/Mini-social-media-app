@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | MyApp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to right, #00b09b, #96c93d);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-container {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .login-container h2 {
+            text-align: center;
+            color: #00b09b;
+            margin-bottom: 25px;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .input-group i {
+            position: absolute;
+            top: 50%;
+            left: 14px;
+            transform: translateY(-50%);
+            color: #00b09b;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 12px 12px 42px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+        
+        .input-group input:focus {
+            border-color: #00b09b;
+            box-shadow: 0 0 0 3px rgba(0, 176, 155, 0.2);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #00b09b;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #029a88;
+        }
+        
+        .bottom-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .bottom-text a {
+            color: #00b09b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Welcome Back</h2>
+        <form method="POST" action="#">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username or Email" required />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password" required />
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="bottom-text">
+                Don't have an account? <a href="register.html">Register</a>
+                <p>Don't have an account? <a href="/register">Register</a></p>
+
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

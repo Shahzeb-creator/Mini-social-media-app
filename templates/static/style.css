@@ -1,0 +1,21 @@
+body {
+    font-family: Arial;
+    background: #f2f2f2;
+    padding: 20px;
+}
+
+nav a {
+    margin-right: 10px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.post {
+    background: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
